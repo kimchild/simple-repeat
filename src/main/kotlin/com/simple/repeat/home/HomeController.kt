@@ -17,13 +17,21 @@ class HomeController {
     }
 
     @PostMapping("/replace")
-    fun replace(model: Model,
-                @RequestParam("camelText") camelText:String): String {
-
-        val result = camelText.replace("(_)(\\w{1})".toRegex(), "\\U$2")
+    fun replace(
+        model: Model,
+        @RequestParam("camelText") camelText: String
+    ): String {
         model["title"] = "Replace"
-        model["text"] = result
+        model["text"] = camelText.snakeToLowerCamelCase()
         return "Replace"
+    }
+
+    val snakeRegex = "_[a-zA-Z]".toRegex()
+    fun String.snakeToLowerCamelCase(): String {
+        return snakeRegex.replace(this) {
+            it.value.replace("_", "")
+                .toUpperCase()
+        }
     }
 
 }
