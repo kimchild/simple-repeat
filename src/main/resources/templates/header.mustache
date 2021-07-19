@@ -1,5 +1,21 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <title>{{title}}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://unpkg.com/tailwindcss@1.4.6/dist/tailwind.min.css" rel="stylesheet">
+
+    <style>
+        .toggle-checkbox:checked {
+              @apply: right-0 border-green-400;
+              right: 0;
+              border-color: rgb(241, 131, 4);
+        }
+        .toggle-checkbox:checked + .toggle-label {
+          @apply: bg-green-400;
+          background-color: rgb(241, 131, 4);
+        }
+    </style>
 </head>
-<body>
+<body class="h-screen overflow-hidden flex items-center justify-center" style="background: #edf2f7;">
